@@ -49,18 +49,14 @@ on two terminal sessions:
 2. `make run_client`
 
 
-## Improvements
-
-* formalize the logging process by having server write to a file the packets it receives and packets it sends and any error messages generated, all time-stamped
-* adding performance measurements to understand how many requests/sec the service can handle.
-
-
 ## things to do:
 
 * fix max_payload issue
 
-* remove all instances of magic value
+* remove all magic value
 
-* add decompress request? what would be purpose? just for testing or is it actually needed?
+* add decompress request
 
-* add code to change port if current port unavailable in make .. possible?
+* fix performance measurements
+
+* add logs instead of prints
