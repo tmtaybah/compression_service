@@ -1,10 +1,11 @@
 # Compression Service
 
+A multi-threaded client-server implementation that provides a simple API to compress and decompress a string using the  Huffman Coding algorithm.
 
-## Description (High Level of inner workings)
+## Description (High Level)
 
 * server creates a socket and a thread for each client that connects to it, it then launches a thread which effectively receives the data from the client and hands it off to service_request to deal with appropriately.
-* service_request creates a header object header object that contains magic value, payload length, and request/status code. Header can also serialize and deserialize its contents (this streamlines receiving and responding to requests).
+* service_request creates a header object that contains magic value, payload length, and request/status code. Header can also serialize and deserialize its contents (this streamlines receiving and responding to requests).
 * based on the request code in the header object service_request calls the relevant api function.
 * finally service_request keeps track of some statistics by incrementing bytes received when it's first called with data and bytes sent before sending the response that results from calling the api functions, all variables that keep track of statistics are shared variables across multiple threads and so are locked before being read or written to.
 * service_request's response is sent to the client over the TCP socket  
